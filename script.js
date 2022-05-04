@@ -31,20 +31,20 @@ createGridBtn.addEventListener("click", (e) => {
   //   colorMode = "color-white";
   modalContainer.classList.add("show-modal");
 
-  setInterval(() => {
-    modalContainer.classList.add("fade-modal");
-  }, 100);
+  //   setInterval(() => {
+  //     modalContainer.classList.add("fade-modal");
+  //   }, 100);
   //   createUserGrid(gridCount);
   e.stopPropagation();
   e.preventDefault();
 });
 
 cancelModalBtn.addEventListener("click", (e) => {
-  modalContainer.classList.remove("fade-modal");
-
-  setInterval(() => {
-    modalContainer.classList.remove("show-modal");
-  }, 100);
+  //   modalContainer.classList.remove("fade-modal");
+  modalContainer.classList.remove("show-modal");
+  //   setInterval(() => {
+  //     modalContainer.classList.remove("show-modal");
+  //   }, 100);
 
   e.stopPropagation();
   e.preventDefault();
