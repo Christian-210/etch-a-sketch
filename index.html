@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etch-A-Sketch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="modal-container">
+      <div id="modal">
+        <h2>How many squares would you like on each side of your grid?</h2>
+        <p class="guide-text">Please enter a number between 2 - 100</p>
+        <input type="text" id="grid-value" />
+        <div id="modal-btn-container">
+          <button id="cancel-modal-btn">Cancel</button>
+          <button id="submit-btn">Submit</button>
+        </div>
+      </div>
+      <div id="modal-bg-overlay"></div>
+    </div>
+
+    <div class="container">
+      <div id="title-bar">
+        <h1>Virtual Etch-A-Sketch</h1>
+        <div class="title-btns">
+          <button id="create-grid">Create Grid</button>
+          <button id="reset-grid">Reset</button>
+        </div>
+      </div>
+
+      <div id="grid-container"></div>
+
+      <div id="btn-container">
+        <div class="container">
+          <div class="instructions">
+            <h2>Sketch Style Option</h2>
+            <p>Select the style you want to sketch in.</p>
+          </div>
+          <ul>
+            <li id="clr-btn-white" class="active">White</li>
+            <li id="clr-btn-random">Random Color</li>
+            <li id="clr-btn-opacity">Opacity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
