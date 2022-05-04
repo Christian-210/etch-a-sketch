@@ -1,0 +1,3 @@
+[submodule "Christian-210/etch-a-sketch"] 
+  path = Christian-210/etch-a-sketch
+  url = git@github.com:Christian-210/etch-a-sketch.git
