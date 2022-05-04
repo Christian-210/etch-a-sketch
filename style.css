@@ -26,10 +26,11 @@ h1 {
 }
 
 #btn-container .container {
-  width: 960px;
+  max-width: 960px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 16px;
 }
 
 #btn-container ul {
@@ -64,6 +65,7 @@ h1 {
   border-bottom: 1px dotted #fff;
   align-items: center;
   margin-bottom: 48px;
+  padding: 0 8px;
 }
 
 button#create-grid {
