@@ -9,6 +9,7 @@ const modalContainer = document.getElementById("modal-container");
 const cancelModalBtn = document.getElementById("cancel-modal-btn");
 const submitModalBtn = document.getElementById("submit-btn");
 const alertMsg = document.querySelector("#modal p.alert-msg");
+const gridSize = document.querySelector(".grid-size");
 let gridCount = 8;
 let colorMode = "color-white";
 let gridElOpacity = 0;
@@ -120,7 +121,7 @@ btnWhite.addEventListener("click", (e) => {
   colorMode = "color-white";
   console.log("color mode:", colorMode);
   [...gridContainer.children].forEach((child) => {
-    child.style.backgroundColor = "#e4e6eb";
+    // child.style.backgroundColor = "#e4e6eb";
     child.style.opacity = gridElOpacity;
   });
 });
@@ -136,7 +137,7 @@ btnRandom.addEventListener("click", (e) => {
   colorMode = "color-randomize";
   console.log("color mode:", colorMode);
   [...gridContainer.children].forEach((child) => {
-    child.style.backgroundColor = "#e4e6eb";
+    // child.style.backgroundColor = "#e4e6eb";
     child.style.opacity = gridElOpacity;
   });
 });
@@ -184,12 +185,16 @@ const createUserGrid = (num) => {
     });
 
     gridContainer.appendChild(gridEl);
-    gridContainer.style.gridTemplateColumns = `repeat(${num}, ${
-      num > 70 ? "8px" : num > 40 && num < 70 ? "16px" : "50px"
-    })`;
-    gridContainer.style.gridTemplateRows = `repeat(${num}, ${
-      num > 70 ? "8px" : num > 40 && num < 70 ? "16px" : "50px"
-    })`;
+    // gridContainer.style.gridTemplateColumns = `repeat(${num}, ${
+    //   num > 70 ? "8px" : num > 40 && num < 70 ? "16px" : "50px"
+    // })`;
+    // gridContainer.style.gridTemplateRows = `repeat(${num}, ${
+    //   num > 70 ? "8px" : num > 40 && num < 70 ? "16px" : "50px"
+    // })`;
+
+    gridContainer.style.gridTemplateColumns = `repeat(${num}, calc(600px / ${num})`;
+    gridContainer.style.gridTemplateRows = `repeat(${num}, calc(600px / ${num})`;
+    gridSize.textContent = `Current Grid Size: ${num} x ${num} `;
   }
 };
 
