@@ -8,7 +8,7 @@ let gridCountInput = document.getElementById("grid-value");
 const modalContainer = document.getElementById("modal-container");
 const cancelModalBtn = document.getElementById("cancel-modal-btn");
 const submitModalBtn = document.getElementById("submit-btn");
-let gridCount = 4;
+let gridCount = 8;
 let colorMode = "color-white";
 let gridElOpacity = 0;
 
