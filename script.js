@@ -8,6 +8,7 @@ let gridCountInput = document.getElementById("grid-value");
 const modalContainer = document.getElementById("modal-container");
 const cancelModalBtn = document.getElementById("cancel-modal-btn");
 const submitModalBtn = document.getElementById("submit-btn");
+const alertMsg = document.querySelector("#modal p.alert-msg");
 let gridCount = 8;
 let colorMode = "color-white";
 let gridElOpacity = 0;
@@ -41,19 +42,26 @@ createGridBtn.addEventListener("click", (e) => {
 
 cancelModalBtn.addEventListener("click", (e) => {
   modalContainer.classList.remove("show-modal");
+  alertMsg.classList.remove("alert-msg-show");
+  gridCountInput.value = " ";
 
   e.stopPropagation();
   e.preventDefault();
 });
 
 submitModalBtn.addEventListener("click", () => {
-  gridCount = Number(gridCountInput.value);
-  gridCountInput.value = " ";
-  modalContainer.classList.remove("show-modal");
-  gridContainer.innerHTML = "";
-  //   colorMode = "color-white";
-  createUserGrid(gridCount);
-  console.log(gridCount);
+  if (Number(gridCountInput.value) > 100 || Number(gridCountInput.value) < 2) {
+    alertMsg.classList.add("alert-msg-show");
+  } else {
+    gridCount = Number(gridCountInput.value);
+    gridCountInput.value = " ";
+    modalContainer.classList.remove("show-modal");
+    gridContainer.innerHTML = "";
+    //   colorMode = "color-white";
+    alertMsg.classList.remove("alert-msg-show");
+    createUserGrid(gridCount);
+    console.log(gridCount);
+  }
 });
 
 document.body.addEventListener("keypress", (e) => {
@@ -61,13 +69,21 @@ document.body.addEventListener("keypress", (e) => {
     // Cancel the default action, if needed
     e.preventDefault();
 
-    gridCount = Number(gridCountInput.value);
-    gridCountInput.value = " ";
-    modalContainer.classList.remove("show-modal");
-    gridContainer.innerHTML = "";
-    //   colorMode = "color-white";
-    createUserGrid(gridCount);
-    console.log(gridCount);
+    if (
+      Number(gridCountInput.value) > 100 ||
+      Number(gridCountInput.value) < 2
+    ) {
+      alertMsg.classList.add("alert-msg-show");
+    } else {
+      gridCount = Number(gridCountInput.value);
+      gridCountInput.value = " ";
+      modalContainer.classList.remove("show-modal");
+      gridContainer.innerHTML = "";
+      //   colorMode = "color-white";
+      alertMsg.classList.remove("alert-msg-show");
+      createUserGrid(gridCount);
+      console.log(gridCount);
+    }
   }
 });
 
@@ -146,6 +162,10 @@ const createUserGrid = (num) => {
     const gridEl = document.createElement("div");
     gridEl.classList.add("grid-square");
 
+    if (colorMode === "color-opacity") {
+      gridEl.style.opacity = 0.1;
+    }
+
     gridEl.addEventListener("mouseenter", (e) => {
       if (colorMode === "color-white") {
         hoverWhite(e.target);
@@ -164,8 +184,12 @@ const createUserGrid = (num) => {
     });
 
     gridContainer.appendChild(gridEl);
-    gridContainer.style.gridTemplateColumns = `repeat(${num}, 50px)`;
-    gridContainer.style.gridTemplateRows = `repeat(${num}, 50px)`;
+    gridContainer.style.gridTemplateColumns = `repeat(${num}, ${
+      num > 70 ? "8px" : num > 40 && num < 70 ? "16px" : "50px"
+    })`;
+    gridContainer.style.gridTemplateRows = `repeat(${num}, ${
+      num > 70 ? "8px" : num > 40 && num < 70 ? "16px" : "50px"
+    })`;
   }
 };
 
