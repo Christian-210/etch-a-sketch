@@ -4,7 +4,7 @@ const btnWhite = document.getElementById("clr-btn-white");
 const btnRandom = document.getElementById("clr-btn-random");
 const btnOpacity = document.getElementById("clr-btn-opacity");
 const resetColors = document.getElementById("reset-grid");
-const gridCountInput = document.getElementById("grid-value");
+let gridCountInput = document.getElementById("grid-value");
 const modalContainer = document.getElementById("modal-container");
 const cancelModalBtn = document.getElementById("cancel-modal-btn");
 const submitModalBtn = document.getElementById("submit-btn");
@@ -15,6 +15,10 @@ let gridElOpacity = 0;
 resetColors.addEventListener("click", () => {
   [...gridContainer.children].forEach((child) => {
     child.style.backgroundColor = "#e4e6eb";
+
+    if (btnOpacity.classList.contains("active")) {
+      child.style.opacity = 0.1;
+    }
   });
 });
 
@@ -31,23 +35,40 @@ createGridBtn.addEventListener("click", (e) => {
   //   colorMode = "color-white";
   modalContainer.classList.add("show-modal");
 
-  //   setInterval(() => {
-  //     modalContainer.classList.add("fade-modal");
-  //   }, 100);
-  //   createUserGrid(gridCount);
   e.stopPropagation();
   e.preventDefault();
 });
 
 cancelModalBtn.addEventListener("click", (e) => {
-  //   modalContainer.classList.remove("fade-modal");
   modalContainer.classList.remove("show-modal");
-  //   setInterval(() => {
-  //     modalContainer.classList.remove("show-modal");
-  //   }, 100);
 
   e.stopPropagation();
   e.preventDefault();
+});
+
+submitModalBtn.addEventListener("click", () => {
+  gridCount = Number(gridCountInput.value);
+  gridCountInput.value = " ";
+  modalContainer.classList.remove("show-modal");
+  gridContainer.innerHTML = "";
+  //   colorMode = "color-white";
+  createUserGrid(gridCount);
+  console.log(gridCount);
+});
+
+document.body.addEventListener("keypress", (e) => {
+  if (e.key === "Enter" && modalContainer.classList.contains("show-modal")) {
+    // Cancel the default action, if needed
+    e.preventDefault();
+
+    gridCount = Number(gridCountInput.value);
+    gridCountInput.value = " ";
+    modalContainer.classList.remove("show-modal");
+    gridContainer.innerHTML = "";
+    //   colorMode = "color-white";
+    createUserGrid(gridCount);
+    console.log(gridCount);
+  }
 });
 
 const hoverWhite = (gridItem) => {
